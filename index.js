@@ -15,7 +15,7 @@ mongoose.connect(MONGODB, {
     useUnifiedTopology: true
 })
     .then(() => {
-        console.log('MongoDB Connected');
+        console.log('MongoDB Connected to app');
         return server.listen({port: PORT});
     })
     .then((res) => {
