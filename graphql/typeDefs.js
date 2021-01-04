@@ -1,18 +1,31 @@
-// const gql = require('apollo-server');
 const gql = require('graphql-tag');
 
-module.exports = gql`
+module.exports = gql`    
     type Track {
         id: ID!
-        name: String!,
-        artist: String!,
+        trackName: String!,
         sound: String!,
-        cover: String!,
         duration: Int!,
-        like: Boolean!,
+        like: Int!,
     }
-    type Query{
-        getPlaylist: [Track]
-        getTrack(trackId: ID!): Track
+    type Album {
+        id: ID!
+        albumName: String!,
+        artist: String!,
+        albumCover: String!,
+        numberOfTracks: Int!,
+        albumDuration: Int!,
+        tracks: [Track]!,
     }
+    type Query {
+#        getTrack(trackId: ID!): Track
+#        getAlbum(albumId: ID!): Album
+        getAlbums: [Album]
+    }
+#    type Mutation {
+#        createPlaylist(name: String!): Playlist!
+#        deletePlaylist(playlistId: ID!): String!
+#        addTrackToPlaylist(playlistId: ID!, trackId: ID!): Playlist
+#        deleteTrackFromPlaylist(trackId: ID!): String!
+#    }
 `;
